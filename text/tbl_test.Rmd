@@ -1,0 +1,126 @@
+---
+params:
+  chapter: 10
+  species: "Northern Rockfish"
+  complex: "yes"
+  area: "Gulf of Alaska"
+  tier: 3
+  dft_title: "`r params$chapter`. Assessment of the `r params$species` stock in the `r params$area`"
+
+author: "Benjamin C. Williams, Peter-John F. Hulson, Chris R. Lunsford"
+date: "November 2022"
+  
+# do not adjust the YAML below this line  
+# ------------------------------------------------
+output: 
+  bookdown::pdf_document2:
+     toc: false
+     number_sections: false
+     
+always_allow_html: true        
+fontsize: 11pt
+geometry:
+  - top=1in
+  - bottom=1in
+  - left=1in
+  - right=1in
+      
+fig_caption: true
+  
+header-includes:
+  
+   \usepackage{sectsty}
+   \allsectionsfont{\centering}
+
+   
+   \usepackage[labelsep=period]{caption}
+   \usepackage{float}
+   \let\origfigure\figure
+   \let\endorigfigure\endfigure
+   \renewenvironment{figure}[1][2] {
+      \expandafter\origfigure\expandafter[H]
+    } {
+      \endorigfigure
+   }
+   
+   \renewcommand{\thefigure}{`r params$chapter`-\arabic{figure}}
+   \renewcommand{\thetable}{`r params$chapter`-\arabic{table}}
+   \pagenumbering{gobble}
+---
+
+```{r, echo = F}
+if(params$complex=="no"){
+   title = paste0(params$chapter, ". Assessment of the ", params$species, " stock in the ", params$area)
+  } else {
+    title = paste0(params$chapter, ". Assessment of the ", params$species, " stock complex in the ", params$area)  
+  }
+
+
+```
+
+---
+title: `r title`
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = F, message = F, warning = F)
+```
+
+```{r}
+library(vroom)
+library(here)
+
+# global 
+year = 2021
+
+# data 
+t1 <- vroom(here::here("data", "tier1.csv")) 
+t3 <- vroom(here::here("data", "tier3.csv")) 
+t5 <- vroom(here::here("data", "tier5.csv")) 
+t6 <- vroom(here::here("data", "tier6.csv")) 
+
+# function
+source(here::here("R", "main_table.R"))
+
+# todo: read from proj output
+c1 = 2842
+c2 = 3489
+c3 = 2884
+
+
+# todo: build a function/switch to auto run the tier(a/b) - also for overfishing/overfished
+
+```
+
+\newpage
+
+Tier 1
+
+```{r}
+main_table(data = t1, year=year, tier=1)
+```
+
+\newpage
+
+Tier 3
+```{r}
+main_table(data = t3, year=year, tier=3)
+```
+
+\newpage
+
+Tier 5
+
+```{r}
+main_table(data = t5, year=year, tier=5)
+```
+
+\newpage
+
+Tier 6
+
+```{r}
+
+main_table(data = t6, year=year, tier=6)
+```
+
