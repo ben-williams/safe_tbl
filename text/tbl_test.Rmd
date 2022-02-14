@@ -2,7 +2,7 @@
 params:
   chapter: 10
   species: "Northern Rockfish"
-  complex: "yes"
+  complex: "no"
   area: "Gulf of Alaska"
   tier: 3
   dft_title: "`r params$chapter`. Assessment of the `r params$species` stock in the `r params$area`"
