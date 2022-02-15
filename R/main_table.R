@@ -118,7 +118,7 @@ main_table <- function(data, year, tier){
       compose(i=15, j=c(3,5), value = as_paragraph("n/a")) %>%
       compose(i=16:16, j=c(3,5), value = as_paragraph("No")) %>%
       compose(i=16:17, j=c(2,4), value = as_paragraph("n/a")) %>%
-      colformat_double(i = c(3:7, 11:13), j = 2:5, big.mark=",", digits = 0, na_str = "N/A") %>%
+      colformat_double(i = c(3:7, 10:12), j = 2:5, big.mark=",", digits = 0, na_str = "N/A") %>%
       merge_h(i=13, part = "body") %>%
       align(align = "center", part = "header") %>%
       align(j=2:5, align = "center", part = "body") %>%
