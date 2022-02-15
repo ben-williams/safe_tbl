@@ -114,9 +114,9 @@ main_table <- function(data, year, tier){
               value = as_paragraph(as_chunk(as.character(year)))) %>%
       compose(i = 14, j = 5,
               value = as_paragraph(as_chunk(as.character(year + 1)))) %>%
-      compose(i=5, j=c(2,4), value = as_paragraph("No")) %>%
+      compose(i=15, j=c(2,4), value = as_paragraph("No")) %>%
       compose(i=15, j=c(3,5), value = as_paragraph("n/a")) %>%
-      compose(i=16:16, j=c(3,5), value = as_paragraph("No")) %>%
+      compose(i=16:17, j=c(3,5), value = as_paragraph("No")) %>%
       compose(i=16:17, j=c(2,4), value = as_paragraph("n/a")) %>%
       colformat_double(i = c(3:7, 10:12), j = 2:5, big.mark=",", digits = 0, na_str = "N/A") %>%
       merge_h(i=13, part = "body") %>%
