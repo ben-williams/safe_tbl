@@ -16,8 +16,10 @@ output:
   bookdown::pdf_document2:
      toc: false
      number_sections: false
+     latex_engine: xelatex
      
-always_allow_html: true        
+     
+    
 fontsize: 11pt
 geometry:
   - top=1in
@@ -31,7 +33,7 @@ header-includes:
   
    \usepackage{sectsty}
    \allsectionsfont{\centering}
-
+   \usepackage{xcolor}
    
    \usepackage[labelsep=period]{caption}
    \usepackage{float}
